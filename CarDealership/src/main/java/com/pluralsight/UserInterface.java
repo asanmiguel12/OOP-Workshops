@@ -4,7 +4,7 @@ package com.pluralsight;
  * Hello world!
  *
  */
-public class App 
+public class UserInterface
 {
     public static void main( String[] args )
     {

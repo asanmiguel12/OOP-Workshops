@@ -9,8 +9,7 @@ public class Card {
     private boolean isFaceUp;
     static ArrayList<String> cards = new ArrayList<>();
     String[] suits = {"Hearts","Spades","Diamonds","Clubs"};
-    String[] values = {"2","3","4","5","6","7","8",
-            "9","10","J","Q","K","A"};
+    String[] values = {"2","3","4","5","6","7","8","9","10","J","Q","K","A"};
 
     public Card(String suit, String value) {
         this.suit = suit;
@@ -21,11 +20,10 @@ public class Card {
     public String getSuit() {
         // only return the suit if the card is face up
         if (isFaceUp) {
-            for (int i = 0; i < suits.length; i++) {
-                return suit;
-            }
+            return suit;
+        } else {
+            return suit;
         }
-        return suit;
     }
 
     public String getValue() {
@@ -33,7 +31,7 @@ public class Card {
         if (isFaceUp) {
             return value;
         } else {
-            return value;
+            return suit;
         }
     }
 
@@ -54,7 +52,7 @@ public class Card {
         return 0;
     }
 
-    public boolean isFaceUp () {
+    public boolean isFaceUp() {
             return isFaceUp;
         }
 
