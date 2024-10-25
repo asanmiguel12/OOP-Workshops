@@ -12,7 +12,6 @@ public class MainApp
 
         Player player1 = new Player();
 
-
         deck.shuffle();
         /* deal 5 cards */
         for (int i = 0; i < 5; i++) {
@@ -20,7 +19,6 @@ public class MainApp
             Card card = deck.deal();
             /* deal that card to the hand */
             hand1.deal(card);
-            deck.shuffle();
             System.out.println(hand1);
         }
         int handValue = hand1.getValue();
