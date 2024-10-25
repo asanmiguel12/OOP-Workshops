@@ -1,9 +1,16 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Card {
     private String suit;
     private String value;
     private boolean isFaceUp;
+    static ArrayList<String> cards = new ArrayList<>();
+    String[] suits = {"Hearts","Spades","Diamonds","Clubs"};
+    String[] values = {"2","3","4","5","6","7","8",
+            "9","10","J","Q","K","A"};
 
     public Card(String suit, String value) {
         this.suit = suit;
@@ -14,10 +21,11 @@ public class Card {
     public String getSuit() {
         // only return the suit if the card is face up
         if (isFaceUp) {
-            return suit;
-        } else {
-            return "#";
+            for (int i = 0; i < suits.length; i++) {
+                return suit;
+            }
         }
+        return suit;
     }
 
     public String getValue() {
@@ -25,7 +33,7 @@ public class Card {
         if (isFaceUp) {
             return value;
         } else {
-            return "#";
+            return value;
         }
     }
 
@@ -34,21 +42,17 @@ public class Card {
         if (isFaceUp) {
             if (value.equalsIgnoreCase("K")) {
                 return 10;
-            }
-            else if (value.equalsIgnoreCase("Q")) {
+            } else if (value.equalsIgnoreCase("Q")) {
                 return 10;
-            }
-           else if (value.equalsIgnoreCase("J")) {
+            } else if (value.equalsIgnoreCase("J")) {
                 return 10;
-            }
-           else if (value.equalsIgnoreCase("A")) {
+            } else if (value.equalsIgnoreCase("A")) {
                 return 11;
-            }
+            } else
             return Integer.valueOf(getValue());
-            } else {
-                return 0;
-            }
         }
+        return 0;
+    }
 
     public boolean isFaceUp () {
             return isFaceUp;

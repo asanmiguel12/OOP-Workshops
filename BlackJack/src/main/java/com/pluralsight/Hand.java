@@ -27,5 +27,9 @@ public class Hand {
         }
         return value;
     }
+
+    public boolean Winner(){
+        return true;
+    }
 }
 

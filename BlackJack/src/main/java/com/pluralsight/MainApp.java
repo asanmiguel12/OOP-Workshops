@@ -27,15 +27,17 @@ public class MainApp
             Card cards2  = deck.deal();
             hand2.deal(cards2);
 
-
-            System.out.println("Your deck has " + deck.getSize() + " cards left");
+            System.out.println(player1.getName() + "'s card : " + cards1.getValue() + " of " + cards1.getSuit());
+            System.out.println(player2.getName() + "'s card : " + cards2.getValue() + " of " + cards2.getSuit());
 
 
         }
         int handValue = hand1.getValue();
         int handValue2 = hand2.getValue();
         System.out.println(player1.getName() + "'s hand: " + handValue);
-        System.out.println(player2.getName() + "'s hand: " + handValue);
+        System.out.println(player2.getName() + "'s hand: " + handValue2);
+        System.out.println("Your deck has " + deck.getSize() + " cards left");
+
     }
 }
 
