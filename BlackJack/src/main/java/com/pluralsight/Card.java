@@ -45,7 +45,7 @@ public class Card {
             String[] values = {"2","3","4","5","6","7","8","9","10"};
             for(String numberValue: values){
                 int pointValue = Integer.parseInt(numberValue);
-                return pointValue;
+                return 0;
             }
         }
         return getPointValue();
