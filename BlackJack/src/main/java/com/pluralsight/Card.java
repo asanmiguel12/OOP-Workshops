@@ -33,7 +33,7 @@ public class Card {
             for (String KThroughQ: faceCards) {
                 KThroughQ = "10";
                 int KThroughQValue = Integer.parseInt(KThroughQ);
-                return KThroughQValue;
+                return Card.this.getPointValue();
             }
                 String[] Ace = {"11","1"};
                 for (String A : faceCards) {
