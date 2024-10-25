@@ -10,6 +10,8 @@ public class MainApp
 
         Hand hand1 = new Hand();
 
+        Player player1 = new Player();
+
         deck.shuffle();
         /* deal 5 cards */
         for (int i = 0; i < 5; i++) {
