@@ -4,11 +4,23 @@ public class Vehicle {
     String brand;
     String carType;
     int yearMake;
-    int vin;
+    String model;
     String id;
     String color;
     String odometer;
     double price;
+
+    public Vehicle(String id, int yearMake, String brand, String model,
+                   String carType, String color, String odometer, double price) {
+        this.brand = brand;
+        this.carType = carType;
+        this.yearMake = yearMake;
+        this.model = model;
+        this.color = color;
+        this.odometer = odometer;
+        this.price = price;
+        this.id = id;
+    }
 
     public String getBrand() {
         return brand;
@@ -34,12 +46,12 @@ public class Vehicle {
         this.yearMake = yearMake;
     }
 
-    public int getVin() {
-        return vin;
+    public String getModel() {
+        return model;
     }
 
-    public void setVin(int vin) {
-        this.vin = vin;
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public String getId() {
@@ -73,16 +85,5 @@ public class Vehicle {
     public void setPrice(double price) {
         this.price = price;
     }
-
-    public Vehicle(String brand, String carType, int yearMake, int vin,
-                   String id, String color, String odometer, double price) {
-        this.brand = brand;
-        this.carType = carType;
-        this.yearMake = yearMake;
-        this.vin = vin;
-        this.id = id;
-        this.color = color;
-        this.odometer = odometer;
-        this.price = price;
-    }
 }
+

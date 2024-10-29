@@ -1,25 +1,25 @@
 package com.pluralsight;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.List;
+import java.util.*;
 
 public class Dealership {
     String name;
     String address;
     String phone;
+    ArrayList<Vehicle> inventory;
 
-    ArrayList<Vehicle> inventory = new ArrayList<>();
 
     public Dealership(String name, String address, String phone) {
         this.name = name;
         this.address = address;
         this.phone = phone;
+        this.inventory = new ArrayList<Vehicle>();
+
     }
+
     //Overload
     public Dealership() {
-
 
     }
 
@@ -47,12 +47,22 @@ public class Dealership {
         this.phone = phone;
     }
 
-    static List<Vehicle> getVehicleByPrice(List<Vehicle> inventory) {
+    public List<Vehicle> getVehicleByPrice(double min, double max) throws IOException {
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        DealershipFileManager.getInventory();
+        List<Vehicle> inventory = new ArrayList<>();
+        for(Vehicle vehicle : inventory) {
+            if (vehicle.getPrice() >= min && vehicle.getPrice() <= max) {
+                inventory.add(vehicle);
+            }
+        }
         return inventory;
     }
 
-    static List<Vehicle> getVehicleByMake(List<Vehicle> inventory) {
-        return inventory;
+    public List<Vehicle> getVehicleByMake(String brand, String model) throws IOException {
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        DealershipFileManager.getInventory();
+        return getAllVehicles();
     }
 
     static List<Vehicle> getVehicleByYear(List<Vehicle> inventory) {
@@ -71,20 +81,22 @@ public class Dealership {
         return inventory;
     }
 
-    static List<Vehicle> getAllVehicles() {
-        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+    public List<Vehicle> getAllVehicles() {
         try {
-            dealershipFileManager.getDealership();
+            DealershipFileManager dealershipFileManager = new DealershipFileManager();
+            DealershipFileManager.getInventory();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } return getAllVehicles();
-    }
-    static Vehicle addVehicle(Vehicle vehicle){
-        return addVehicle(vehicle);
+        }
+        return inventory;
     }
 
-    static Vehicle removeVehicle (Vehicle vehicle) {
-        return removeVehicle(vehicle);
+    public void addVehicle(Vehicle vehicle) {
+        inventory.add(vehicle);
+    }
+
+    public void removeVehicle(Vehicle vehicle) {
+        inventory.remove(vehicle);
     }
 }
