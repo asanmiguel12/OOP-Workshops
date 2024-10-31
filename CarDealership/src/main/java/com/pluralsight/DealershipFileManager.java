@@ -1,8 +1,6 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -28,24 +26,39 @@ public class DealershipFileManager {
         System.out.println("Is this the correct dealership you would like to view? (Y/N)");
         String choice = scanner.nextLine();
 
-        bufferedReader.close();
-        fileReader.close();
-
-
         if (choice.equalsIgnoreCase("Y")) {
             UserInterface userInterface = new UserInterface();
-            userInterface.display();
+            getInventory();
         }
         if (choice.equalsIgnoreCase("N")) {
             userChooseDealership();
         }
+        bufferedReader.close();
+        fileReader.close();
         return dealershipInfo;
     }
 
-    public void saveDealership(Dealership dealership) {
+public void saveDealership(Dealership dealership) {
         System.out.println("Would you like to save this dealership's inventory? (Y/N)");
         String userChoice = scanner.nextLine();
         if (userChoice.equalsIgnoreCase("Y")) {
+            try {
+                FileWriter fileWriter = new FileWriter("inventory.csv");
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                bufferedWriter.write(dealership.getName() + "|" + dealership.getAddress() + "|" + dealership.getPhone());
+                bufferedWriter.newLine();
+                for (Vehicle vehicle : dealership.getAllVehicles()) {
+                    bufferedWriter.write(vehicle.getVin() + "|" + vehicle.getYearMake() + "|" + vehicle.getMake() + "|" +
+                            vehicle.getModel() + "|" + vehicle.getModel() + "|" + vehicle.getColor() + "|" +
+                            vehicle.getOdometer() + "|" + vehicle.getPrice());
+                    bufferedWriter.newLine();
+                }
+                bufferedWriter.close();
+            } catch (Exception e) {
+                System.out.println("Error writing to file");
+            }
+        }
+    }
 
         }
     }
@@ -58,7 +71,7 @@ public class DealershipFileManager {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String input = bufferedReader.readLine();
 
-            if (input.contains(userInputFile)) {
+            if (fileReader.equals(userInputFile + ".csv")) {
                 getDealership();
             } else {
                 System.out.println("Sorry we could not find a dealership under that name. Please try again");
@@ -83,11 +96,11 @@ public class DealershipFileManager {
         String readLine;
         while ((readLine = bufferedReader.readLine()) != null) {
             String[] vehicleInfo = readLine.split("\\|");
-            Vehicle vehicle = new Vehicle(vehicleInfo[0], Integer.parseInt(vehicleInfo[1]), vehicleInfo[2], vehicleInfo[3], vehicleInfo[4], vehicleInfo[5], vehicleInfo[6], Double.parseDouble(vehicleInfo[7]));
+            Vehicle vehicle = new Vehicle(vehicleInfo[0], Integer.parseInt(vehicleInfo[1]), vehicleInfo[2], vehicleInfo[3],
+                    vehicleInfo[4], vehicleInfo[5], vehicleInfo[6], Double.parseDouble(vehicleInfo[7]));
             inventory.add(vehicle);
             System.out.println(readLine);
         }
-        return inventory.toString();
+        return null;
     }
-
 }

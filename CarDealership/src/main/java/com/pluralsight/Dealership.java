@@ -59,25 +59,38 @@ public class Dealership {
         return inventory;
     }
 
-    public List<Vehicle> getVehicleByMake(String brand, String model) throws IOException {
+    public List<Vehicle> getVehicleByMakeModel(String make, String model) throws IOException {
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        DealershipFileManager.getInventory();
+        List<Vehicle> inventory = new ArrayList<>();
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getMake().equalsIgnoreCase(vehicle.make) && vehicle.getModel().equalsIgnoreCase(model)) {
+                inventory.add(vehicle);
+            }
+        }
+        return inventory;
+    }
+
+    public List<Vehicle> getVehicleByYear(int min, int max) throws IOException {
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
         DealershipFileManager.getInventory();
         return getAllVehicles();
     }
 
-    static List<Vehicle> getVehicleByYear(List<Vehicle> inventory) {
+    public List<Vehicle> getVehicleByColor(String color) throws IOException {
+        ArrayList<Vehicle> inventory = new ArrayList<Vehicle>();
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+
+        DealershipFileManager.getInventory();
         return inventory;
+
     }
 
-    static List<Vehicle> getVehicleByColor(List<Vehicle> inventory) {
-        return inventory;
+    public List<Vehicle> getVehicleByMileage(int min, int max) {
+        return getVehicleByMileage(5, max);
     }
 
-    static List<Vehicle> getVehicleByMileage(List<Vehicle> inventory) {
-        return inventory;
-    }
-
-    static List<Vehicle> getVehicleByType(List<Vehicle> inventory) {
+    public List<Vehicle> getVehicleByType() {
         return inventory;
     }
 
@@ -85,6 +98,7 @@ public class Dealership {
         try {
             DealershipFileManager dealershipFileManager = new DealershipFileManager();
             DealershipFileManager.getInventory();
+            ArrayList<Vehicle> inventory = new ArrayList<Vehicle>();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -92,11 +106,17 @@ public class Dealership {
         return inventory;
     }
 
-    public void addVehicle(Vehicle vehicle) {
+    public void addVehicle(Vehicle vehicle) throws IOException {
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        dealershipFileManager.getInventory();
+        ArrayList<Vehicle> inventory = new ArrayList<Vehicle>();
         inventory.add(vehicle);
     }
 
-    public void removeVehicle(Vehicle vehicle) {
+    public void removeVehicle(Vehicle vehicle) throws IOException {
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        dealershipFileManager.getInventory();
+        ArrayList<Vehicle> inventory = new ArrayList<Vehicle>();
         inventory.remove(vehicle);
     }
 }

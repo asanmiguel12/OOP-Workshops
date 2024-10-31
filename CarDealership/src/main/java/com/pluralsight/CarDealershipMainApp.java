@@ -8,8 +8,8 @@ public class CarDealershipMainApp {
 //        Dealership dealership = new Dealership("A's", "123", "1234");
 //        System.out.println(dealership.getName());
 //
-//        UserInterface userInterface = new UserInterface();
-//        userInterface.display();
+        UserInterface userInterface = new UserInterface();
+        userInterface.display();
 
 //        DealershipFileManager dealershipFileManager = new DealershipFileManager();
 //        dealershipFileManager.fileReader();
