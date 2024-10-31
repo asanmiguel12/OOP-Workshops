@@ -49,7 +49,7 @@ public class Dealership {
 
     public List<Vehicle> getVehicleByPrice(double min, double max) throws IOException {
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
-        DealershipFileManager.getInventory();
+        dealershipFileManager.getInventory();
         List<Vehicle> inventory = new ArrayList<>();
         for(Vehicle vehicle : inventory) {
             if (vehicle.getPrice() >= min && vehicle.getPrice() <= max) {
@@ -61,7 +61,7 @@ public class Dealership {
 
     public List<Vehicle> getVehicleByMakeModel(String make, String model) throws IOException {
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
-        DealershipFileManager.getInventory();
+        dealershipFileManager.getInventory();
         List<Vehicle> inventory = new ArrayList<>();
         for (Vehicle vehicle : inventory) {
             if (vehicle.getMake().equalsIgnoreCase(vehicle.make) && vehicle.getModel().equalsIgnoreCase(model)) {
@@ -73,7 +73,7 @@ public class Dealership {
 
     public List<Vehicle> getVehicleByYear(int min, int max) throws IOException {
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
-        DealershipFileManager.getInventory();
+        dealershipFileManager.getInventory();
         return getAllVehicles();
     }
 
@@ -81,7 +81,7 @@ public class Dealership {
         ArrayList<Vehicle> inventory = new ArrayList<Vehicle>();
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
 
-        DealershipFileManager.getInventory();
+        dealershipFileManager.getInventory();
         return inventory;
 
     }
@@ -97,7 +97,7 @@ public class Dealership {
     public List<Vehicle> getAllVehicles() {
         try {
             DealershipFileManager dealershipFileManager = new DealershipFileManager();
-            DealershipFileManager.getInventory();
+            dealershipFileManager.getInventory();
             ArrayList<Vehicle> inventory = new ArrayList<Vehicle>();
 
         } catch (IOException e) {

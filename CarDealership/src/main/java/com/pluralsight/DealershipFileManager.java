@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class DealershipFileManager {
     Scanner scanner = new Scanner(System.in);
 
-
     public String getDealership() throws IOException {
         FileReader fileReader = new FileReader("carInventory.csv");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -38,7 +37,7 @@ public class DealershipFileManager {
         return dealershipInfo;
     }
 
-public void saveDealership(Dealership dealership) {
+    public void saveDealership(Dealership dealership) {
         System.out.println("Would you like to save this dealership's inventory? (Y/N)");
         String userChoice = scanner.nextLine();
         if (userChoice.equalsIgnoreCase("Y")) {
@@ -58,13 +57,12 @@ public void saveDealership(Dealership dealership) {
                 System.out.println("Error writing to file");
             }
         }
-    }
 
-        }
     }
 
     public void userChooseDealership() throws IOException {
         try {
+            Scanner scanner = new Scanner(System.in);
             System.out.println("Please enter the name of the dealership you would like to view");
             String userInputFile = scanner.nextLine();
             FileReader fileReader = new FileReader(userInputFile + ".csv");
@@ -85,7 +83,7 @@ public void saveDealership(Dealership dealership) {
         }
     }
 
-    public static String getInventory() throws IOException {
+    public void getInventory() throws IOException {
         FileReader fileReader = new FileReader("carInventory.csv");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         List<Vehicle> inventory = new ArrayList<>();
@@ -101,6 +99,5 @@ public void saveDealership(Dealership dealership) {
             inventory.add(vehicle);
             System.out.println(readLine);
         }
-        return null;
     }
 }
